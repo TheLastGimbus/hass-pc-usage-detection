@@ -81,3 +81,6 @@ while True:
         except Exception as e:
             print(f"Can't connect: {e}")
             sleep(5)
+
+    # If not this, the script will use 100% cpu xD
+    sleep(0.1)
