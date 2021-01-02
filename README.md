@@ -9,7 +9,8 @@ It uses [HTTP binary sensor](https://www.home-assistant.io/integrations/http#bin
 1. Download it: `git clone https://github.com/TheLastGimbus/hass-pc-usage-detection/` - or just press "download zip" button above
 2. Get your [Home Assistant long-lived access token](https://www.home-assistant.io/docs/authentication/#your-account-profile)
 3. (Optional, but **very recomended**) [Set up SSH tunnel to your Home Assistant](#ssh-tunnel)
-4. `python3 main.py --url "http://<home_assistant_ip>:<port>/api/states/binary_sensor.<binary_sensor_name>" --token <HASS_LONG_LIVE_TOKEN> --keyboard --mouse`
+4. `pip3 install -r requirements.txt`
+5. `python3 main.py --url "http://<home_assistant_ip>:<port>/api/states/binary_sensor.<binary_sensor_name>" --token <HASS_LONG_LIVE_TOKEN> --keyboard --mouse`
 
 You need to specify `--keyboard` and `--mouse` flags to detect keeb/mouse activity
 
