@@ -60,7 +60,8 @@ If you don't know what `screen` and `venv` is, here is simplified version:
 ```bash
 #!/bin/bash
 # Set up SSH tunnel
-ssh -L 9876:192.168.1.242:8123 -N -T matiii@192.168.1.242
+# The '&' makes it run in the background
+ssh -L 9876:192.168.1.242:8123 -N -T matiii@192.168.1.242 &
 MY_SCRIPT_PATH="/PATH/TO/SCRIPT/FOLDER"
 python3 "$MY_SCRIPT_PATH/main.py" \
     --url "http://localhost:9876/api/states/binary_sensor.pc_is_touched_script" \
