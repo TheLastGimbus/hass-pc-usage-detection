@@ -42,7 +42,14 @@ This is what I use on Ubuntu - replace `matiii@192.168.1.242` with your server `
 # I run SSH tunnel and script separatly in screen, so I can manage and restart them whenever I want
 
 # Set up SSH tunnel
-screen -S "hass-ssh-tunnel" -dm ssh -L 9876:192.168.1.242:8123 -N -T matiii@192.168.1.242
+# This loops it, so it always tries to re-connect after 10 seconds if something fails
+screen -S "hass-ssh-tunnel" -dm bash -c '\
+  while true; do
+  ssh -L 9876:192.168.1.242:8123 -N -T matiii@192.168.1.242 ;
+  sleep 10 ;
+  echo "Disconnected, trying to re-connect..." ;
+  done;
+'
 screen -S "hass-python-presence-detector" -dm bash -c '\
   MY_SCRIPT_PATH="/PATH/TO/SCRIPT/FOLDER" ; \
   # This is to activate Python virtual enviroment, very recommended, but you can skip it \
